@@ -1,0 +1,80 @@
+/* Hero Slider - Optimized for Mobile Performance */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    display: none; /* Will be set to flex by JS */
+}
+
+.hero-slider .slide {
+    position: relative;
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: opacity 0.5s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hero-slider .slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Optimize image loading */
+.hero-slider .slide {
+    background-image: none; /* Remove inline background image */
+}
+
+.hero-slider .slide[data-src] {
+    background-image: var(--bg-image);
+}
+
+/* Optimize for mobile */
+@media (max-width: 768px) {
+    .hero-slider .slide {
+        min-height: 500px;
+        height: 80vh;
+    }
+    
+    /* Reduce animation intensity on mobile */
+    .hero-slider {
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+/* Loading state */
+.hero-slider .slide.loading {
+    background: #f0f0f0;
+}
+
+/* Accessibility */
+.hero-slider [role="img"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

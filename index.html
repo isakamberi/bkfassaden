@@ -25,11 +25,13 @@
     <meta property="og:url" content="https://www.bkfassaden.ch">
     <meta property="og:type" content="website">
     
-    <!-- Curved Loop Styles -->
-    <link rel="stylesheet" href="css/curved-loop.css">
+    <!-- Preload first hero image for better performance -->
+    <link rel="preload" as="image" href="images/hero/367980480.jpg" fetchpriority="high">
     
-    <!-- Metallic Logo Effect -->
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="css/curved-loop.css">
     <link rel="stylesheet" href="css/metallic-effect.css">
+    <link rel="stylesheet" href="css/components/hero-slider.css">
     
     <!-- Main JS -->
     <script src="js/main.js" defer></script>
@@ -103,18 +105,29 @@
             </button>
             
             <nav id="primary-navigation" class="primary-navigation">
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#about" class="nav-link">About Us</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
+                <div class="nav-buttons">
+                    <a href="#home" class="nav-button">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#services" class="nav-button">
+                        <i class="fas fa-tools"></i>
+                        <span>Services</span>
+                    </a>
+                    <a href="#projects" class="nav-button">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#contact" class="nav-button">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </div>
                 
                 <div class="header-actions">
                     <button class="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="theme-icon sun"><i class="fas fa-sun"></i></span>
-                        <span class="theme-icon moon"><i class="fas fa-moon"></i></span>
+                        <span class="theme-icon sun"><i class="fas fa-sun"></i> Light</span>
+                        <span class="theme-icon moon"><i class="fas fa-moon"></i> Dark</span>
                     </button>
                 </div>
             </nav>
@@ -129,30 +142,35 @@
          data-color="var(--primary-color)">
     </div>
 
-    <!-- Hero Section with Slider -->
+    <!-- Hero Section with Optimized Slider -->
     <section id="home" class="service-hero">
-        <div class="hero-slider">
-            <!--  
-                HERO IMAGES SECTION
-                ===================
-                To add or modify hero images:
-                1. Add a new <div> element with class="slide"
-                2. Set the background-image URL to your image
-                3. Add the 'active' class to the first slide only
-                4. Keep the order: most important images first
-                
-                Image requirements:
-                - High resolution (min 1920x1080px)
-                - Optimized for web (use tools like TinyPNG)
-                - Keep file names descriptive
-            -->
-            
-            <!-- Hero Images -->
-            <div class="slide active" style="background-image: url('images/hero/367980480.jpg');"></div>
-            <div class="slide" style="background-image: url('images/hero/BD2.webp');"></div>
-            <div class="slide" style="background-image: url('images/hero/apartment-building-what-makes-good-apartment-building-scaled.jpg');"></div>
-            <div class="slide" style="background-image: url('images/hero/mass-timber-25-king_bates-smart_c-tom-roe.webp');"></div>
-            <div class="slide" style="background-image: url('images/hero/what-luxury-villas-will-be-ready-in-2025.webp');"></div>
+        <div class="hero-slider" aria-label="Image carousel">
+            <!-- Hero Images with Lazy Loading -->
+            <div class="slide" 
+                 data-src="images/hero/367980480.jpg"
+                 role="img"
+                 aria-label="Professional facade construction">
+            </div>
+            <div class="slide" 
+                 data-src="images/hero/BD2.webp"
+                 role="img"
+                 aria-label="Modern building facade">
+            </div>
+            <div class="slide" 
+                 data-src="images/hero/apartment-building-what-makes-good-apartment-building-scaled.jpg"
+                 role="img"
+                 aria-label="Apartment building facade">
+            </div>
+            <div class="slide" 
+                 data-src="images/hero/mass-timber-25-king_bates-smart_c-tom-roe.webp"
+                 role="img"
+                 aria-label="Timber facade construction">
+            </div>
+            <div class="slide" 
+                 data-src="images/hero/what-luxury-villas-will-be-ready-in-2025.webp"
+                 role="img"
+                 aria-label="Luxury villa facade">
+            </div>
         </div>
         <div class="container hero-content">
             <h1 class="enhanced-hero-title">

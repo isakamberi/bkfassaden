@@ -78,24 +78,32 @@ function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const primaryNav = document.querySelector('.primary-navigation');
     const navLinks = document.querySelectorAll('.nav-link');
+    const themeToggle = document.querySelector('.theme-toggle');
     const html = document.documentElement;
     
     if (!menuToggle || !primaryNav) return;
     
     // Toggle mobile menu
-    const toggleMenu = () => {
+    const toggleMenu = (show = null) => {
         const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        primaryNav.classList.toggle('active');
-        html.classList.toggle('nav-open');
+        const shouldShow = show !== null ? show : !isExpanded;
+        
+        menuToggle.setAttribute('aria-expanded', shouldShow);
+        menuToggle.classList.toggle('active', shouldShow);
+        primaryNav.classList.toggle('active', shouldShow);
+        html.classList.toggle('nav-open', shouldShow);
+        
+        // Toggle body scroll
+        document.body.style.overflow = shouldShow ? 'hidden' : '';
         
         // Toggle hamburger animation
         const hamburger = menuToggle.querySelector('.hamburger');
         if (hamburger) {
-            hamburger.classList.toggle('active');
+            hamburger.classList.toggle('active', shouldShow);
         }
     };
     
+    // Toggle menu on button click
     menuToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleMenu();
@@ -104,47 +112,63 @@ function initMobileMenu() {
     // Close menu when clicking on a link (for mobile)
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 1024) {
-                toggleMenu();
+            if (window.innerWidth <= 992) {
+                toggleMenu(false);
             }
         });
     });
+    
+    // Close menu when clicking on theme toggle in mobile menu
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            if (window.innerWidth <= 992) {
+                // Small delay to allow theme toggle to complete
+                setTimeout(() => toggleMenu(false), 300);
+            }
+        });
+    }
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         const isClickInside = primaryNav.contains(e.target) || menuToggle.contains(e.target);
         if (!isClickInside && primaryNav.classList.contains('active')) {
-            toggleMenu();
+            toggleMenu(false);
         }
     });
     
     // Close menu when pressing Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && primaryNav.classList.contains('active')) {
-            toggleMenu();
+            toggleMenu(false);
         }
     });
     
     // Handle window resize
     let resizeTimer;
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
         document.body.classList.add('resize-animation-stopper');
         clearTimeout(resizeTimer);
+        
         resizeTimer = setTimeout(() => {
             document.body.classList.remove('resize-animation-stopper');
-        }, 400);
-        
-        // Reset menu on desktop
-        if (window.innerWidth > 1024) {
-            menuToggle.setAttribute('aria-expanded', 'false');
-            primaryNav.classList.remove('active');
-            html.classList.remove('nav-open');
-            const hamburger = menuToggle.querySelector('.hamburger');
-            if (hamburger) {
-                hamburger.classList.remove('active');
+            
+            // Reset menu state on desktop
+            if (window.innerWidth > 992) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.classList.remove('active');
+                primaryNav.classList.remove('active');
+                html.classList.remove('nav-open');
+                document.body.style.overflow = '';
+                
+                const hamburger = menuToggle.querySelector('.hamburger');
+                if (hamburger) {
+                    hamburger.classList.remove('active');
+                }
             }
-        }
-    });
+        }, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
 }
 
 // Language switcher functionality
@@ -486,16 +510,22 @@ function initThemeToggle() {
         const themeToggleButton = document.querySelector('.theme-toggle');
         
         if (themeToggleButton) {
-            // Update icon based on current theme
-            updateThemeIcon(savedTheme);
+            // Update icon and text based on current theme
+            updateThemeUI(savedTheme);
             
             themeToggleButton.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 
+                // Apply theme transition
+                document.documentElement.classList.add('theme-transition');
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transition');
+                }, 300);
+                
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme);
+                updateThemeUI(newTheme);
                 
                 // Reinitialize electric border effects to apply new theme colors
                 document.querySelectorAll('[data-electric-border]').forEach(element => {
@@ -506,23 +536,32 @@ function initThemeToggle() {
                     }
                 });
             });
+            
+            // Add transition class after initial render
+            requestAnimationFrame(() => {
+                document.documentElement.classList.add('theme-transition');
+            });
         }
     }
     
-    // Function to update theme icon
-    function updateThemeIcon(theme) {
+    // Function to update theme icon and text
+    function updateThemeUI(theme) {
         const themeToggle = document.querySelector('.theme-toggle');
         if (!themeToggle) return;
         
-        const sunIcon = themeToggle.querySelector('.fa-sun');
-        const moonIcon = themeToggle.querySelector('.fa-moon');
+        const sunElement = themeToggle.querySelector('.sun');
+        const moonElement = themeToggle.querySelector('.moon');
         
         if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
+            sunElement.style.opacity = '0';
+            sunElement.style.transform = 'translateX(-20px)';
+            moonElement.style.opacity = '1';
+            moonElement.style.transform = 'translateX(0)';
         } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
+            sunElement.style.opacity = '1';
+            sunElement.style.transform = 'translateX(0)';
+            moonElement.style.opacity = '0';
+            moonElement.style.transform = 'translateX(20px)';
         }
     }
 }

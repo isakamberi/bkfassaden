@@ -7,50 +7,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingSubtext = document.querySelector('.loading-subtext');
     
     let progress = 0;
-    const loadingPhrases = [
-        'Preparing Excellence',
-        'Building Your Experience',
-        'Crafting Perfection',
-        'Almost There...'
-    ];
+    const loadingPhrases = ['Loading...'];
     let currentPhrase = 0;
 
     // Initial state
     loadingText.textContent = loadingPhrases[0];
-    loadingSubtext.textContent = 'Initializing...';
+    loadingSubtext.textContent = 'Please wait...';
 
-    // Smooth loading animation - faster for 1 second total duration
-    const loadingInterval = setInterval(() => {
-        // Update progress - faster increment for 1 second completion
-        progress += Math.random() * 30 + 10; // Faster progress for 1 second completion
-        if (progress > 100) progress = 100;
+    // Calculate progress based on time for exact 1 second duration
+    const startTime = Date.now();
+    const duration = 1000; // 1 second total duration
+    
+    const updateProgress = () => {
+        const elapsed = Date.now() - startTime;
+        progress = Math.min((elapsed / duration) * 100, 100);
         
-        // Update progress bar and number with easing
+        // Update progress bar and number
         loadingProgress.style.width = `${progress}%`;
-        loadingNumber.textContent = `${Math.min(Math.floor(progress), 100)}%`;
+        loadingNumber.textContent = `${Math.floor(progress)}%`;
         
-        // Update loading phrases at certain intervals
-        // Simplified for 1 second duration - show fewer messages
-        if (progress > 50 && currentPhrase === 0) {
-            currentPhrase++;
-            loadingText.textContent = loadingPhrases[3];
-            loadingSubtext.textContent = 'Almost ready...';
-        }
-        
-        // Add dynamic scale effect to logo based on progress
-        const scale = 1 + (Math.sin(Date.now() / 300) * 0.05);
-        loadingLogo.style.transform = `scale(${scale}) rotate(${(progress / 100) * 360}deg)`;
+        // Add subtle animation to logo
+        const scale = 1 + (Math.sin(Date.now() / 300) * 0.03);
+        loadingLogo.style.transform = `scale(${scale})`;
 
         // When loading is complete
         if (progress >= 100) {
-            clearInterval(loadingInterval);
-            loadingText.textContent = 'Welcome to BK Fassaden';
+            loadingText.textContent = 'BK Fassaden';
             loadingSubtext.textContent = 'Experience the difference';
             
-            // Start exit animation immediately for 1 second total duration
+            // Start exit animation
             loadingScreen.classList.add('loading-complete');
             
-            // Start fade out animation after a short delay
+            // Remove loading screen after a very short delay
             setTimeout(() => {
                 loadingScreen.style.opacity = '0';
                 loadingScreen.style.pointerEvents = 'none';
@@ -59,10 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     loadingScreen.remove();
                     document.body.style.overflow = 'auto';
-                }, 300);
-            }, 200);
+                }, 100);
+            }, 100);
+        } else {
+            requestAnimationFrame(updateProgress);
         }
-    }, 20); // Faster interval for smoother animation
+    };
+    
+    // Start the progress update
+    requestAnimationFrame(updateProgress);
 
     // Prevent scrolling while loading
     document.body.style.overflow = 'hidden';
