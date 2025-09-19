@@ -87,32 +87,34 @@
     </div>
 
     <!-- Header -->
-    <header>
+    <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <a href="#home" class="logo-link">
-                    <!-- Logo image -->
-                    <img src="images/bk-fassaden-ag-logo.png" 
-                         data-i18n-alt="logo.alt"
-                         alt="BK Fassaden AG Logo" 
-                         class="logo-img">
-                </a>
-            </div>
-            <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-                <span class="hamburger"></span>
+            <a href="#home" class="logo">
+                <img src="images/bk-fassaden-ag-logo.png" alt="BK Fassaden AG Logo" class="logo-img">
+            </a>
+            
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </span>
+                <span class="sr-only">Menu</span>
             </button>
-            <nav>
+            
+            <nav id="primary-navigation" class="primary-navigation">
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
+                
                 <div class="header-actions">
                     <button class="theme-toggle" aria-label="Toggle dark mode">
-                        <i class="fas fa-sun"></i>
-                        <i class="fas fa-moon"></i>
+                        <span class="theme-icon sun"><i class="fas fa-sun"></i></span>
+                        <span class="theme-icon moon"><i class="fas fa-moon"></i></span>
                     </button>
                 </div>
             </nav>
