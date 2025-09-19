@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK Fassaden AG | Facades, Painting & Plastering in Switzerland</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/bk-fassaden-ag-logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="BK Fassaden AG - Your specialist for facades, painting, and plastering work in Switzerland. Professional consultation & execution. Contact us today!">
+    <meta name="keywords" content="facade construction, painting work, plastering, facade renovation, Switzerland, Uster, BK Fassaden">
+    <meta name="author" content="BK Fassaden AG">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="BK Fassaden AG | Professional Facade Solutions">
+    <meta property="og:description" content="Your specialist for facades, painting, and plastering work in Switzerland. Get a free consultation today!">
+    <meta property="og:image" content="images/bk-fassaden-ag-logo.png">
+    <meta property="og:url" content="https://www.bkfassaden.ch">
+    <meta property="og:type" content="website">
+    
+    <!-- Curved Loop Styles -->
+    <link rel="stylesheet" href="css/curved-loop.css">
+    
+    <!-- Metallic Logo Effect -->
+    <link rel="stylesheet" href="css/metallic-effect.css">
+    
+    <!-- Main JS -->
+    <script src="js/main.js" defer></script>
+    <script src="js/CurvedLoop.js" defer></script>
+    <script src="js/effects/metallic-logo.js" defer></script>
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to get this from EmailJS
+        })();
+    </script>
+</head>
+<body class="index-page">
+    <!-- Enhanced Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo-container">
+                <div class="logo-orb">
+                    <div class="orb-inner"></div>
+                    <img src="images/bk-fassaden-ag-logo.png" alt="BK Fassaden AG" class="loading-logo">
+                </div>
+                <div class="logo-glow"></div>
+            </div>
+            
+            <div class="loading-texts">
+                <h1 class="loading-text">Preparing Excellence</h1>
+                <p class="loading-subtext">Initializing...</p>
+            </div>
+            
+            <div class="loading-progress-container">
+                <div class="loading-progress-bar">
+                    <div id="loading-progress" class="loading-progress">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                <div class="progress-details">
+                    <span id="loading-number" class="loading-number">0%</span>
+                    <div class="progress-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loading-footer">
+                <span class="brand-text">BK Fassaden AG</span>
+                <span class="divider">|</span>
+                <span class="slogan">Crafting Excellence in Every Facade</span>
+            </div>
+            
+            <div class="particles-container" id="particles-js"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#home" class="logo-link">
+                    <!-- Logo image -->
+                    <img src="images/bk-fassaden-ag-logo.png" 
+                         data-i18n-alt="logo.alt"
+                         alt="BK Fassaden AG Logo" 
+                         class="logo-img">
+                </a>
+            </div>
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Curved Text Loop -->
+    <div class="curved-loop-container" data-curved-loop 
+         data-text="Welcome ✦ To ✦ BK FASSADEN AG ✦ "
+         data-speed="1"
+         data-curve="0"
+         data-color="var(--primary-color)">
+    </div>
+
+    <!-- Hero Section with Slider -->
+    <section id="home" class="service-hero">
+        <div class="hero-slider">
+            <!--  
+                HERO IMAGES SECTION
+                ===================
+                To add or modify hero images:
+                1. Add a new <div> element with class="slide"
+                2. Set the background-image URL to your image
+                3. Add the 'active' class to the first slide only
+                4. Keep the order: most important images first
+                
+                Image requirements:
+                - High resolution (min 1920x1080px)
+                - Optimized for web (use tools like TinyPNG)
+                - Keep file names descriptive
+            -->
+            
+            <!-- Hero Images -->
+            <div class="slide active" style="background-image: url('images/hero/367980480.jpg');"></div>
+            <div class="slide" style="background-image: url('images/hero/BD2.webp');"></div>
+            <div class="slide" style="background-image: url('images/hero/apartment-building-what-makes-good-apartment-building-scaled.jpg');"></div>
+            <div class="slide" style="background-image: url('images/hero/mass-timber-25-king_bates-smart_c-tom-roe.webp');"></div>
+            <div class="slide" style="background-image: url('images/hero/what-luxury-villas-will-be-ready-in-2025.webp');"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 class="enhanced-hero-title">
+                <span data-text-type="Professional Facade Solutions for Switzerland"
+                      data-typing-speed="80"
+                      data-initial-delay="500"
+                      data-loop="false"
+                      data-show-cursor="false"
+                      data-start-on-visible="true"></span>
+            </h1>
+            <p>Since 2020, we've been setting the standard for quality in facade construction, painting, and plastering work.</p>
+            <div class="buttons">
+                <a href="#contact" class="btn primary">Free Consultation</a>
+                <a href="#services" class="btn secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="moving-icons-stripe">
+                <div class="icon-track">
+                    <!-- First set of icons -->
+                    <div class="icon"><i class="fas fa-hammer"></i></div>
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <div class="icon"><i class="fas fa-paint-roller"></i></div>
+                    <div class="icon"><i class="fas fa-ruler-combined"></i></div>
+                    <div class="icon"><i class="fas fa-hard-hat"></i></div>
+                    <div class="icon"><i class="fas fa-trowel"></i></div>
+                    <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="icon"><i class="fas fa-hammer"></i></div>
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <div class="icon"><i class="fas fa-paint-roller"></i></div>
+                    <div class="icon"><i class="fas fa-ruler-combined"></i></div>
+                    <div class="icon"><i class="fas fa-hard-hat"></i></div>
+                    <div class="icon"><i class="fas fa-trowel"></i></div>
+                    <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-electric-border
+                     data-electric-speed="1"
+                     data-electric-chaos="0.5"
+                     data-electric-thickness="2"
+                     data-electric-radius="16">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Facades</h3>
+                    <p>Complete facade systems for optimal energy efficiency, noise protection, and increased property value.</p>
+                    <a href="facades.html" class="btn secondary read-more">Learn More</a>
+                </div>
+                <div class="service-card" data-electric-border
+                     data-electric-speed="1"
+                     data-electric-chaos="0.5"
+                     data-electric-thickness="2"
+                     data-electric-radius="16">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Painting</h3>
+                    <p>Precision painting for interior and exterior areas with professional color consultation.</p>
+                    <a href="painting.html" class="btn secondary read-more">Learn More</a>
+                </div>
+                <div class="service-card" data-electric-border
+                     data-electric-speed="1"
+                     data-electric-chaos="0.5"
+                     data-electric-thickness="2"
+                     data-electric-radius="16">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Plastering</h3>
+                    <p>Professional plastering services for new constructions, renovations, and restorations.</p>
+                    <a href="plastering.html" class="btn secondary read-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About BK Fassaden AG</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2020 as a GmbH and converted to an AG in 2023, BK Fassaden AG stands for the highest quality and reliability in facade construction, painting, and plastering work.</p>
+                    <p>Our owner and managing director, Besar Kamberi, brings over 18 years of practical experience and stands for craftsmanship perfection and customer satisfaction.</p>
+                </div>
+                <div class="counters-container">
+                    <div class="counter-circle">
+                        <div class="counter-number" data-target="18">0</div>
+                        <div class="counter-label">Years of Experience</div>
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring__circle" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                        </svg>
+                    </div>
+                    <div class="counter-circle">
+                        <div class="counter-number" data-target="100">0</div>
+                        <div class="counter-label">% Transparent</div>
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring__circle" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                        </svg>
+                    </div>
+                    <div class="counter-circle">
+                        <div class="counter-number" data-target="95">0</div>
+                        <div class="counter-label">% Ecological</div>
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring__circle" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Metallic Logo Container -->
+                <div class="metallic-logo-section" style="margin: 2rem auto 0; max-width: 180px;">
+                    <div id="metallic-logo" 
+                         data-metallic-logo 
+                         data-size="180"
+                         data-logo-url="images/bk-fassaden-ag-logo.png"
+                         data-metal-color1="#e0e0e0"
+                         data-metal-color2="#f0f0f0"
+                         data-metal-color3="#c0c0c0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1464082354059-27db6ce50048?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"></div>
+                    <h3>Apartment Building</h3>
+                    <p>Fällanden</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"></div>
+                    <h3>Luxury Villa</h3>
+                    <p>Herrliberg</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"></div>
+                    <h3>Office Building</h3>
+                    <p>Zurich</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"></div>
+                    <h3>Apartment Building</h3>
+                    <p>Bubendorf</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"></div>
+                    <h3>Single-Family Home</h3>
+                    <p>Horgen</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');"></div>
+                    <h3>Villa Renovation</h3>
+                    <p>Zollikon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Brauereistrasse 4, 8610 Uster, Switzerland</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+41764227740">+41 76 422 77 40</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@bkfassaden.ch">info@bkfassaden.ch</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon-Fri: 7:00 AM - 5:00 PM<br>Sat: By Appointment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="button" id="sendEmailBtn" class="btn primary">Send Message</button>
+                    <p class="form-note">Or email us directly at: <a href="mailto:isakamberi81@gmail.com">isakamberi81@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded by load-footer.js -->
+    <div id="footer-placeholder"></div>
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image"></div>
+                <div class="modal-details">
+                    <h3 class="modal-title"></h3>
+                    <p class="modal-location"></p>
+                    <div class="modal-description"></div>
+                    <div class="project-features"></div>
+                    <a href="#contact" class="btn primary">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/text-type.js"></script>
+    <script src="js/electric-border.js"></script>
+    <script src="js/load-footer.js"></script>
+    <script src="js/click-effects.js"></script>
+    <script src="js/project-modal.js"></script>
+    <script src="js/hero-slider.js"></script>
+    <script src="js/loading-screen.js"></script>
+    <script src="js/projects-scroll.js"></script>
+</body>
+</html>
